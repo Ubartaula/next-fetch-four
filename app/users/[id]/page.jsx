@@ -5,14 +5,16 @@ import { Suspense } from "react";
 
 export const revalidate = 3600; //
 
-const SingleUserPage = async ({ params }) => {
-  const { id } = params;
+const SingleUserPage = async ({ params: { id } }) => {
+  // const { id } = params;
 
-  const [userData, userPostData] = await Promise.all([
-    getUser(id),
-    getUserPosts(id),
-  ]);
-  const user = JSON.parse(JSON.stringify(userData));
+  // const [userData, userPostData] = await Promise.all([
+  //   getUser(id),
+  //   getUserPosts(id),
+  // ]);
+  // const user = JSON.parse(JSON.stringify(userData));
+
+  const user = await getUser(id);
 
   return (
     <div className="">
@@ -20,9 +22,9 @@ const SingleUserPage = async ({ params }) => {
         Posts by {user?.username} !
       </p>
 
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <ListUserPosts userPosts={JSON.parse(JSON.stringify(userPostData))} />
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 };
