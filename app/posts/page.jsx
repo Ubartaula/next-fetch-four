@@ -7,9 +7,9 @@ export const revalidate = 3600;
 const PostsPage = async () => {
   const posts = await getPosts();
 
-  if (posts === undefined || posts?.length <= 0) {
-    return <p>List of posts are empty</p>;
-  }
+  // if (posts === undefined || posts?.length <= 0) {
+  //   return <p>List of posts are empty</p>;
+  // }
 
   return (
     <>
