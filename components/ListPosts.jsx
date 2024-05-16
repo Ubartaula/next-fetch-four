@@ -6,7 +6,7 @@ const ListPosts = ({ posts }) => {
     <div className="bg-white text-black max-w-lg mx-auto  ">
       <p className="p-4">ListPosts</p>
       {posts &&
-        posts.map((post) => {
+        posts?.map((post) => {
           return (
             <div key={post?._id} className="m-2 border border-gray-500">
               <Link
