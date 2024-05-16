@@ -14,7 +14,7 @@ const PostsPage = async () => {
   return (
     <>
       <Suspense fallback={"posts loading..."}>
-        <ListPosts posts={JSON?.parse(JSON?.stringify(posts))} />
+        <ListPosts posts={posts ? JSON.parse(JSON.stringify(posts)) : null} />
       </Suspense>
     </>
   );

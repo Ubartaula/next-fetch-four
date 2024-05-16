@@ -14,7 +14,7 @@ const UsersPage = async () => {
   return (
     <>
       <Suspense fallback={"users loading..."}>
-        <ListUsers users={JSON?.parse(JSON?.stringify(users))} />
+        <ListUsers users={users ? JSON?.parse(JSON?.stringify(users)) : null} />
       </Suspense>
     </>
   );
