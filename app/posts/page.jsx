@@ -7,10 +7,14 @@ export const revalidate = 3600;
 const PostsPage = async () => {
   const posts = await getPosts();
 
+  if (posts === undefined || posts?.length <= 0) {
+    return <p>List of posts are empty</p>;
+  }
+
   return (
     <>
       <Suspense fallback={"posts loading..."}>
-        <ListPosts posts={JSON.parse(JSON.stringify(posts))} />
+        <ListPosts posts={JSON?.parse(JSON?.stringify(posts))} />
       </Suspense>
     </>
   );

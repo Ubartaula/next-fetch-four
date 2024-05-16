@@ -7,9 +7,9 @@ export const getPosts = cache(async () => {
     await connectMongoDb();
 
     const posts = await Post.find().exec();
-    if (!posts) return { error: "no posts found" };
+    if (!posts) return null;
     return posts;
   } catch (error) {
-    return { error: error?.message };
+    // return { error: error?.message };
   }
 });

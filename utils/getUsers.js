@@ -7,9 +7,9 @@ export const getUsers = cache(async () => {
     await connectMongoDb();
 
     const users = await User.find().exec();
-    if (!users) return { error: "no users found" };
+    if (!users) return null;
     return users;
   } catch (error) {
-    return { error: error?.message };
+    // return { error: error?.message };
   }
 });
