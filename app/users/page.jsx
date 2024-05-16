@@ -2,14 +2,15 @@ import ListUsers from "@/components/ListUsers";
 import { getUsers } from "@/utils/getUsers";
 import React, { Suspense } from "react";
 
-export const revalidate = 3600;
-
 const UsersPage = async () => {
-  const users = await getUsers();
+  const res = await fetch(`${process.env.NEXT_AUTH_URL}/api/users`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
 
-  // if (users === undefined || users?.length <= 0) {
-  //   return <p>List of users are empty</p>;
-  // }
+  const users = await res.json();
 
   return (
     <>

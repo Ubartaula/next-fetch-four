@@ -14,7 +14,14 @@ const SingleUserPage = async ({ params: { id } }) => {
   // ]);
   // const user = JSON.parse(JSON.stringify(userData));
 
-  const user = await getUser(id);
+  const res = await fetch(`${process.env.NEXT_AUTH_URL}/api/users/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
+
+  const user = await res.json();
 
   return (
     <div className="">
